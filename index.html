@@ -141,26 +141,47 @@
       transform: translateY(-2px);
     }
 
-    /* RETURN BUTTON TO HUB */
+    /* HIGH CONTRAST RETURN BUTTON TO HUB */
     .btn-return-hub {
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      color: white;
-      padding: 8px 18px;
+      background: #0f172a;
+      color: #ffffff;
+      border: 1.5px solid #334155;
+      padding: 10px 22px;
       border-radius: 999px;
-      font-size: 0.88rem;
-      font-weight: 700;
+      font-size: 0.95rem;
+      font-weight: 800;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-      backdrop-filter: blur(8px);
+      gap: 10px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+      letter-spacing: -0.2px;
     }
 
     .btn-return-hub:hover {
-      background: rgba(255, 255, 255, 0.28);
-      transform: translateX(-3px);
+      background: #1d4ed8;
+      border-color: #3b82f6;
+      color: #ffffff;
+      transform: translateX(-4px) scale(1.02);
+      box-shadow: 0 6px 18px rgba(29, 78, 216, 0.35);
+    }
+
+    .btn-return-hub .return-arrow {
+      background: rgba(255, 255, 255, 0.2);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-return-hub:hover .return-arrow {
+      transform: translateX(-2px);
+      background: rgba(255, 255, 255, 0.3);
     }
 
     /* TOP LEVEL PAGES (HUB / EXPLORER / QUIZ) */
@@ -1355,7 +1376,8 @@
         
         <div class="page-nav-bar">
           <button class="btn-return-hub" id="btnReturnFromExplorer">
-            <span>⬅</span> Retour au Menu Principal
+            <span class="return-arrow">⬅</span>
+            <span>Retour au Menu Principal</span>
           </button>
           <div class="view-switcher">
             <button class="view-btn active" data-view="viewBack">
@@ -1516,7 +1538,8 @@
         
         <div class="page-nav-bar">
           <button class="btn-return-hub" id="btnReturnFromQuiz">
-            <span>⬅</span> Retour au Menu Principal
+            <span class="return-arrow">⬅</span>
+            <span>Retour au Menu Principal</span>
           </button>
           <div class="score-badge">
             <span>Score :</span>
