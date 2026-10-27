@@ -1,0 +1,2714 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anatomie Médicale : Ostéologie de la Colonne Vertébrale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #1d4ed8;
+      --primary-dark: #1e3a8a;
+      --primary-light: #3b82f6;
+      --accent: #0284c7;
+      --accent-cyan: #06b6d4;
+      --success: #10b981;
+      --success-bg: #ecfdf5;
+      --danger: #ef4444;
+      --danger-bg: #fef2f2;
+      --warning: #f59e0b;
+      --bg-gradient: linear-gradient(135deg, #090e17 0%, #111c2e 50%, #0a111e 100%);
+      --card-bg: rgba(255, 255, 255, 0.98);
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --radius-lg: 22px;
+      --radius-md: 14px;
+      --shadow-elevation: 0 20px 40px -15px rgba(0, 0, 0, 0.35), 0 0 1px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient background grid */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: 
+        radial-gradient(circle at 10% 15%, rgba(14, 165, 233, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 90% 85%, rgba(59, 130, 246, 0.15) 0%, transparent 45%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Top presentation banner */
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding: 12px 24px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-md);
+      color: #fff;
+    }
+
+    .header-titles {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .header-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--accent-cyan);
+      font-weight: 700;
+    }
+
+    .header-authors {
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+
+    .header-authors strong {
+      color: #38bdf8;
+      font-weight: 700;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      transition: all 0.2s ease;
+    }
+
+    .icon-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+
+    /* RETURN BUTTON TO HUB */
+    .btn-return-hub {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: white;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-return-hub:hover {
+      background: rgba(255, 255, 255, 0.28);
+      transform: translateX(-3px);
+    }
+
+    /* TOP LEVEL PAGES (HUB / EXPLORER / QUIZ) */
+    .app-page {
+      display: none;
+      animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .app-page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(14px) scale(0.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* ========================================================
+       PAGE 1: MAIN MENU / HUB (CHOOSE MODE)
+    ======================================================== */
+    .hub-hero {
+      text-align: center;
+      padding: 30px 20px 40px;
+    }
+
+    .hub-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+
+    .hub-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3.2rem;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      letter-spacing: -0.8px;
+    }
+
+    .hub-subtitle {
+      font-size: 1.2rem;
+      color: #cbd5e1;
+      max-width: 720px;
+      margin: 0 auto 50px;
+      line-height: 1.6;
+    }
+
+    /* 2 BIG CARDS GRID */
+    .hub-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .hub-card {
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: var(--radius-lg);
+      padding: 44px 38px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: var(--shadow-elevation);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: left;
+    }
+
+    .hub-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #38bdf8, #2563eb);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .hub-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.45);
+    }
+
+    .hub-card:hover::before {
+      opacity: 1;
+    }
+
+    .hub-card-icon {
+      width: 74px;
+      height: 74px;
+      border-radius: 20px;
+      background: #eff6ff;
+      border: 1.5px solid #bfdbfe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      margin-bottom: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .hub-card:hover .hub-card-icon {
+      background: #2563eb;
+      color: white;
+      transform: scale(1.1) rotate(4deg);
+    }
+
+    .hub-card-tag {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .hub-card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+
+    .hub-card-desc {
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .hub-card-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 34px;
+      width: 100%;
+    }
+
+    .hub-card-features li {
+      font-size: 0.92rem;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+
+    .hub-card-features li span {
+      color: var(--success);
+      font-weight: 800;
+    }
+
+    .hub-card-btn {
+      width: 100%;
+      background: #f1f5f9;
+      color: #1e293b;
+      border: 1px solid #cbd5e1;
+      padding: 16px 24px;
+      border-radius: 999px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+
+    .hub-card:hover .hub-card-btn {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: white;
+      border-color: #2563eb;
+      box-shadow: 0 8px 20px -3px rgba(37, 99, 235, 0.45);
+    }
+
+    /* ========================================================
+       PAGE 2 & 3: MAIN CARD CONTAINER (EXPLORER & QUIZ)
+    ======================================================== */
+    .main-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 34px 40px;
+      box-shadow: var(--shadow-elevation);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      position: relative;
+    }
+
+    .page-nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #edf2f7;
+    }
+
+    /* EXPLORER SPECIFIC */
+    .explorer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .explorer-title-box h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .explorer-title-box p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-top: 4px;
+    }
+
+    .view-switcher {
+      display: flex;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      padding: 4px;
+      border-radius: 999px;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .view-btn {
+      border: none;
+      background: transparent;
+      color: #475569;
+      font-size: 0.86rem;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .view-btn:hover { color: #0f172a; }
+
+    .view-btn.active {
+      background: white;
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .explorer-layout {
+      display: grid;
+      grid-template-columns: 480px 1fr;
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    .photo-display-container {
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      min-height: 560px;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    .interactive-stage {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+
+    .real-photo-view {
+      display: none;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .real-photo-view.active { display: flex; }
+
+    .real-photo-img {
+      max-width: 100%;
+      max-height: 500px;
+      object-fit: contain;
+      border-radius: 8px;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
+    }
+
+    /* PINS ON PHOTOS */
+    .hotspot-pin {
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      border: 2.5px solid #ffffff;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.5);
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 10;
+    }
+
+    .hotspot-pin::after {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      right: -6px;
+      bottom: -6px;
+      border-radius: 50%;
+      border: 2px solid #38bdf8;
+      opacity: 0.8;
+      animation: pinRadar 2s infinite ease-out;
+    }
+
+    @keyframes pinRadar {
+      0% { transform: scale(0.9); opacity: 1; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    .hotspot-pin:hover {
+      transform: translate(-50%, -50%) scale(1.15);
+      background: #0284c7;
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.6);
+    }
+
+    .hotspot-pin.active {
+      background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+      border-color: #ffffff;
+      transform: translate(-50%, -50%) scale(1.25);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.8);
+    }
+
+    .hotspot-pin.active::after { border-color: #34d399; }
+
+    .pin-selector-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .pin-btn-chip {
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #334155;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .pin-btn-chip:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .pin-btn-chip.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+      box-shadow: 0 3px 10px rgba(29, 78, 216, 0.35);
+    }
+
+    /* RIGHT DETAIL CARD WITH "AFFICHER LE NOM" */
+    .detail-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 28px 32px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      position: relative;
+    }
+
+    .detail-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .detail-category-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #0369a1;
+      background: #e0f2fe;
+      padding: 4px 12px;
+      border-radius: 6px;
+    }
+
+    .detail-slide-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #475569;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      padding: 3px 10px;
+      border-radius: 6px;
+    }
+
+    .name-mystery-box {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 2px dashed #93c5fd;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .name-mystery-box.revealed {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border-style: solid;
+      border-color: #3b82f6;
+    }
+
+    .mystery-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #64748b;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mystery-title-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .mystery-name-display {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.65rem;
+      font-weight: 900;
+      color: #0f172a;
+      transition: all 0.3s ease;
+      letter-spacing: -0.3px;
+    }
+
+    .mystery-name-display.hidden-mode {
+      filter: blur(8px);
+      user-select: none;
+      color: #94a3b8;
+    }
+
+    .btn-reveal-name {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-reveal-name:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.5);
+    }
+
+    .btn-reveal-name.is-revealed {
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+      box-shadow: none;
+    }
+
+    .detail-body {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .detail-section-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .detail-desc {
+      font-size: 1rem;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    .detail-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .detail-bullets li {
+      font-size: 0.93rem;
+      color: #475569;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+
+    .detail-bullets li::before {
+      content: "•";
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .detail-bullets strong { color: #0f172a; }
+
+    .detail-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 18px;
+      border-top: 1px solid #edf2f7;
+    }
+
+    .nav-arrow-btn {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-arrow-btn:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .test-class-prompt {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* QUIZ SCREENS */
+    .screen { display: none; }
+    .screen.active {
+      display: block;
+      animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .quiz-hero-intro {
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .quiz-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #eff6ff;
+      color: var(--primary);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      border: 1px solid #bfdbfe;
+    }
+
+    .quiz-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .quiz-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 36px;
+      text-align: left;
+    }
+
+    .feature-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 18px 20px;
+      border-radius: var(--radius-md);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .feature-box:hover {
+      border-color: #93c5fd;
+      transform: translateY(-2px);
+    }
+
+    .feature-icon {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .feature-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #1e293b;
+      margin-bottom: 4px;
+    }
+
+    .feature-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: white;
+      border: none;
+      padding: 16px 40px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.45);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.6);
+    }
+
+    .quiz-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #edf2f7;
+    }
+
+    .question-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .score-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      color: #1e40af;
+      font-size: 0.95rem;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #38bdf8, #2563eb);
+      width: 0%;
+      transition: width 0.4s ease;
+      border-radius: 999px;
+    }
+
+    .category-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #0369a1;
+      background: #e0f2fe;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .question-text {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.35;
+      margin-bottom: 24px;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .option-btn {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      text-align: left;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #1e293b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .option-letter {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: #e2e8f0;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .option-btn:hover:not(.locked) {
+      background: #eff6ff;
+      border-color: #93c5fd;
+      transform: translateX(4px);
+    }
+
+    .option-btn:hover:not(.locked) .option-letter {
+      background: var(--primary);
+      color: white;
+    }
+
+    .option-btn.correct {
+      background: var(--success-bg) !important;
+      border-color: var(--success) !important;
+      color: #065f46 !important;
+    }
+
+    .option-btn.correct .option-letter {
+      background: var(--success) !important;
+      color: white !important;
+    }
+
+    .option-btn.wrong {
+      background: var(--danger-bg) !important;
+      border-color: var(--danger) !important;
+      color: #991b1b !important;
+    }
+
+    .option-btn.wrong .option-letter {
+      background: var(--danger) !important;
+      color: white !important;
+    }
+
+    .option-btn.eliminated {
+      opacity: 0.35;
+      pointer-events: none;
+      text-decoration: line-through;
+    }
+
+    .option-btn.locked { cursor: default; }
+
+    .lifelines-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .lifeline-btn {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #334155;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .lifeline-btn:hover:not(:disabled) {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .lifeline-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .hint-box {
+      display: none;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      color: #92400e;
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      line-height: 1.5;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .explanation-card {
+      display: none;
+      background: #f0fdf4;
+      border-left: 5px solid var(--success);
+      padding: 18px 22px;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin-bottom: 24px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .explanation-card.show-wrong {
+      background: #fef2f2;
+      border-left-color: var(--danger);
+    }
+
+    .explanation-header {
+      font-weight: 800;
+      font-size: 1rem;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .explanation-card.show-correct .explanation-header { color: #065f46; }
+    .explanation-card.show-wrong .explanation-header { color: #991b1b; }
+
+    .explanation-text {
+      font-size: 0.95rem;
+      color: #334155;
+      line-height: 1.5;
+    }
+
+    .slide-ref {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: #dbeafe;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .action-row {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn-next {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-next:hover {
+      background: var(--primary-dark);
+      transform: translateX(3px);
+    }
+
+    /* Results */
+    .results-hero {
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .results-icon {
+      font-size: 4rem;
+      margin-bottom: 12px;
+      animation: bounce 1s infinite alternate ease-in-out;
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-8px); }
+    }
+
+    .results-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .results-grade {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      font-family: 'Outfit', sans-serif;
+      line-height: 1;
+      margin: 16px 0;
+    }
+
+    .results-mention {
+      display: inline-block;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+      padding: 8px 24px;
+      border-radius: 999px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .results-summary-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .summary-heading {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #1e293b;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .summary-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .summary-item {
+      font-size: 0.9rem;
+      color: #475569;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .summary-item strong { color: #0f172a; }
+
+    .results-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+    }
+
+    #confettiCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    @media (max-width: 900px) {
+      .hub-grid { grid-template-columns: 1fr; }
+      .main-card { padding: 24px 20px; }
+      .explorer-layout { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .summary-list { grid-template-columns: 1fr; }
+      .hub-title { font-size: 2.3rem; }
+      .header-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .header-controls { align-self: flex-end; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="confettiCanvas"></canvas>
+
+  <div class="container">
+    <!-- Top presentation header -->
+    <header class="header-bar">
+      <div class="header-titles">
+        <span class="header-tag">Module Interactif • Ostéologie du Rachis</span>
+        <span class="header-authors">Présentation par <strong>Arwa Acheche &amp; Molka Jemai</strong></span>
+      </div>
+      <div class="header-controls">
+        <button class="icon-btn" id="soundToggle" title="Activer / Couper le son" aria-label="Toggle Sound">🔊</button>
+        <button class="icon-btn" id="fullscreenToggle" title="Mode Plein Écran (Idéal projecteur)" aria-label="Fullscreen">⛶</button>
+      </div>
+    </header>
+
+    <!-- ========================================================
+         PAGE 1: MAIN MENU / HUB SCREEN (CHOOSE BETWEEN 2 APPS)
+    ======================================================== -->
+    <section class="app-page active" id="pageHub">
+      <div class="hub-hero">
+        <div class="hub-badge">
+          <span>🎓</span> Évaluation &amp; Interaction de Classe
+        </div>
+        <h1 class="hub-title">Ostéologie de la Colonne Vertébrale</h1>
+        <p class="hub-subtitle">
+          Choisissez une activité interactive pour animer votre présentation et tester les connaissances de vos camarades !
+        </p>
+
+        <div class="hub-grid">
+          
+          <!-- CARD 1: EXPLORATEUR ANATOMIQUE -->
+          <div class="hub-card" id="cardGoExplorer">
+            <div>
+              <div class="hub-card-icon">🦴</div>
+              <div class="hub-card-tag">Mode 1 • Découverte &amp; Devinettes</div>
+              <h2 class="hub-card-title">Squelette &amp; Rachis Interactif</h2>
+              <p class="hub-card-desc">
+                Photos réelles de la présentation avec <strong>noms totalement masqués</strong>. Cliquez sur les points 1, 2, 3 pour interroger vos camarades, puis révélez le nom !
+              </p>
+              <ul class="hub-card-features">
+                <li><span>✔</span> 5 Vues réelles (Dos, Vertèbre, Sacrum, Courbures, Disque)</li>
+                <li><span>✔</span> Noms masqués par défaut pour tester la classe</li>
+                <li><span>✔</span> Bouton « Afficher le nom » avec effet sonore</li>
+              </ul>
+            </div>
+            <button class="hub-card-btn">
+              <span>Ouvrir l'Explorateur</span>
+              <span>➔</span>
+            </button>
+          </div>
+
+          <!-- CARD 2: QUIZ DE LA CLASSE -->
+          <div class="hub-card" id="cardGoQuiz">
+            <div>
+              <div class="hub-card-icon">🏆</div>
+              <div class="hub-card-tag">Mode 2 • Test d'Évaluation</div>
+              <h2 class="hub-card-title">Quiz Interactif de la Classe</h2>
+              <p class="hub-card-desc">
+                Un grand quiz de 10 questions cliniques tirées directement de vos diapositives avec jokers, indices et calcul de la note finale sur 20.
+              </p>
+              <ul class="hub-card-features">
+                <li><span>✔</span> 10 Questions ciblées avec rappels des diapositives</li>
+                <li><span>✔</span> Joker 50/50 &amp; Indice oral pour la classe</li>
+                <li><span>✔</span> Note sur 20 &amp; Bilan pédagogique final</li>
+              </ul>
+            </div>
+            <button class="hub-card-btn">
+              <span>Lancer le Quiz</span>
+              <span>➔</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         PAGE 2: STANDALONE REAL PHOTO EXPLORER (WITH RETURN BUTTON)
+    ======================================================== -->
+    <section class="app-page" id="pageExplorer">
+      <main class="main-card">
+        
+        <div class="page-nav-bar">
+          <button class="btn-return-hub" id="btnReturnFromExplorer">
+            <span>⬅</span> Retour au Menu Principal
+          </button>
+          <div class="view-switcher">
+            <button class="view-btn active" data-view="viewBack">
+              <span>👤</span> Squelette du Dos
+            </button>
+            <button class="view-btn" data-view="viewVertebra">
+              <span>🔬</span> Vertèbre Type
+            </button>
+            <button class="view-btn" data-view="viewSacrum">
+              <span>🛡️</span> Le Sacrum
+            </button>
+            <button class="view-btn" data-view="viewCurvatures">
+              <span>📐</span> Courbures de Profil
+            </button>
+            <button class="view-btn" data-view="viewDisc">
+              <span>🧱</span> Disque Intervertébral
+            </button>
+          </div>
+        </div>
+
+        <div class="explorer-header">
+          <div class="explorer-title-box">
+            <h2><span>🦴</span> Explorateur Anatomique (Photos Réelles)</h2>
+            <p>Cliquez sur un <strong>point numéroté</strong> sur la photo. Les noms sont <strong>masqués</strong> : demandez à un camarade de deviner, puis cliquez sur <strong>« Afficher le nom »</strong> !</p>
+          </div>
+        </div>
+
+        <div class="explorer-layout">
+          
+          <!-- Left: Real Photo Stage -->
+          <div class="photo-display-container">
+            <div class="interactive-stage">
+              
+              <!-- 1. VUE DU DOS (SLIDE 3) -->
+              <div class="real-photo-view active" id="viewBack">
+                <img src="images/clean_back_final.png" alt="Squelette du dos" class="real-photo-img">
+                <button class="hotspot-pin active" style="top: 20%; left: 37%;" data-id="cervicale" title="Point 1">1</button>
+                <button class="hotspot-pin" style="top: 38%; left: 37%;" data-id="thoracique" title="Point 2">2</button>
+                <button class="hotspot-pin" style="top: 61%; left: 37%;" data-id="lombaire" title="Point 3">3</button>
+                <button class="hotspot-pin" style="top: 73%; left: 37%;" data-id="sacrum" title="Point 4">4</button>
+                <button class="hotspot-pin" style="top: 80%; left: 37%;" data-id="coccyx" title="Point 5">5</button>
+                <button class="hotspot-pin" style="top: 35%; left: 80%;" data-id="courburesRachis" title="Point 6">6</button>
+              </div>
+
+              <!-- 2. VERTÈBRE TYPE (SLIDE 12/13) -->
+              <div class="real-photo-view" id="viewVertebra">
+                <img src="images/clean_vertebra_type_final.png" alt="Vertèbre Type Réelle" class="real-photo-img">
+                <button class="hotspot-pin" style="top: 66%; left: 50%;" data-id="corpsVertebral" title="Point 1">1</button>
+                <button class="hotspot-pin" style="top: 41%; left: 50%;" data-id="trouVertebral" title="Point 2">2</button>
+                <button class="hotspot-pin" style="top: 26%; left: 50%;" data-id="arcVertebral" title="Point 3">3</button>
+                <button class="hotspot-pin" style="top: 10%; left: 50%;" data-id="apophyseEpineuse" title="Point 4">4</button>
+                <button class="hotspot-pin" style="top: 38%; left: 16%;" data-id="apophysesTransverses" title="Point 5">5</button>
+                <button class="hotspot-pin" style="top: 28%; left: 68%;" data-id="apophysesArticulaires" title="Point 6">6</button>
+              </div>
+
+              <!-- 3. SACRUM RÉEL (SLIDE 24) -->
+              <div class="real-photo-view" id="viewSacrum">
+                <img src="images/clean_sacrum_final.png" alt="Sacrum Réel" class="real-photo-img">
+                <button class="hotspot-pin" style="top: 10%; left: 50%;" data-id="promontoire" title="Point 1">1</button>
+                <button class="hotspot-pin" style="top: 24%; left: 15%;" data-id="surfaceAuriculaire" title="Point 2">2</button>
+                <button class="hotspot-pin" style="top: 50%; left: 66%;" data-id="foramensSacres" title="Point 3">3</button>
+                <button class="hotspot-pin" style="top: 52%; left: 47%;" data-id="creteSacree" title="Point 4">4</button>
+                <button class="hotspot-pin" style="top: 92%; left: 49%;" data-id="apexCoccyx" title="Point 5">5</button>
+              </div>
+
+              <!-- 4. COURBURES DE PROFIL (SLIDE 21) -->
+              <div class="real-photo-view" id="viewCurvatures">
+                <img src="images/clean_curvatures_perfect.png" alt="Courbures de Profil Réelles" class="real-photo-img">
+                <button class="hotspot-pin" style="top: 19%; left: 50%;" data-id="lordoseCervicale" title="Point 1">1</button>
+                <button class="hotspot-pin" style="top: 38%; left: 58%;" data-id="cyphoseThoracique" title="Point 2">2</button>
+                <button class="hotspot-pin" style="top: 58%; left: 46%;" data-id="lordoseLombaire" title="Point 3">3</button>
+                <button class="hotspot-pin" style="top: 74%; left: 54%;" data-id="cyphoseSacree" title="Point 4">4</button>
+                <button class="hotspot-pin" style="top: 84%; left: 58%;" data-id="coccyxProfil" title="Point 5">5</button>
+              </div>
+
+              <!-- 5. DISQUE INTERVERTÉBRAL (SLIDE 20) -->
+              <div class="real-photo-view" id="viewDisc">
+                <img src="images/clean_disc.png" alt="Disque Intervertébral Réel" class="real-photo-img">
+                <button class="hotspot-pin" style="top: 46%; left: 38%;" data-id="anneauFibreux" title="Point 1">1</button>
+                <button class="hotspot-pin" style="top: 49%; left: 45%;" data-id="noyauPulpeux" title="Point 2">2</button>
+                <button class="hotspot-pin" style="top: 25%; left: 40%;" data-id="vertebreSup" title="Point 3">3</button>
+                <button class="hotspot-pin" style="top: 42%; left: 67%;" data-id="racineNerveuse" title="Point 4">4</button>
+              </div>
+
+            </div>
+
+            <!-- Numbered selector chips -->
+            <div class="pin-selector-bar" id="pinSelectorBar"></div>
+          </div>
+
+          <!-- Right: Active Recall Card -->
+          <div class="detail-container">
+            <div>
+              <div class="detail-meta-row">
+                <span class="detail-category-badge" id="infoRegionTag">Région Anatomique</span>
+                <span class="detail-slide-badge" id="infoSlideRef">Diapositive 6</span>
+              </div>
+
+              <!-- MYSTERY REVEAL BOX -->
+              <div class="name-mystery-box" id="mysteryBox">
+                <div class="mystery-label">
+                  <span>Structure ciblée</span>
+                  <span id="mysteryHintTag">🔒 Nom masqué</span>
+                </div>
+                
+                <div class="mystery-title-wrap">
+                  <div class="mystery-name-display hidden-mode" id="displayedName">
+                    [ ? ? ? ? ? ? ? ? ? ]
+                  </div>
+                  <button class="btn-reveal-name" id="btnRevealName">
+                    <span id="revealIcon">👁️</span>
+                    <span id="revealText">Afficher le nom</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="detail-body">
+                <div>
+                  <div class="detail-section-title">
+                    <span>📖</span> Description &amp; Morphologie
+                  </div>
+                  <p class="detail-desc" id="infoDesc">
+                    Sélectionnez un point numéroté sur la photo pour afficher sa description morphologique.
+                  </p>
+                </div>
+
+                <div>
+                  <div class="detail-section-title">
+                    <span>⚡</span> Rôles &amp; Notions Clés du Cours
+                  </div>
+                  <ul class="detail-bullets" id="infoBullets"></ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="detail-footer">
+              <button class="nav-arrow-btn" id="btnPrevPart">
+                <span>◀</span> Précédent
+              </button>
+              <span class="test-class-prompt">💡 Interrogez vos camarades avant de cliquer sur « Afficher le nom » !</span>
+              <button class="nav-arrow-btn" id="btnNextPart">
+                Suivant <span>▶</span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </main>
+    </section>
+
+    <!-- ========================================================
+         PAGE 3: STANDALONE QUIZ SHOW (WITH RETURN BUTTON)
+    ======================================================== -->
+    <section class="app-page" id="pageQuiz">
+      <main class="main-card">
+        
+        <div class="page-nav-bar">
+          <button class="btn-return-hub" id="btnReturnFromQuiz">
+            <span>⬅</span> Retour au Menu Principal
+          </button>
+          <div class="score-badge">
+            <span>Score :</span>
+            <span id="scoreText">0 / 0</span>
+          </div>
+        </div>
+
+        <!-- SCREEN 1: WELCOME SCREEN -->
+        <section class="screen active" id="screenWelcome">
+          <div class="quiz-hero-intro">
+            <div class="quiz-badge">
+              <span>✨</span> Test d'attention post-présentation
+            </div>
+            <h1 class="quiz-title">Défi Médical : Le Rachis Humain</h1>
+            <p class="quiz-desc">
+              10 questions cliniques et morphologiques ciblées directement sur vos 25 diapositives. Faites voter la classe !
+            </p>
+
+            <div class="features-grid">
+              <div class="feature-box">
+                <div class="feature-icon">🦴</div>
+                <div class="feature-title">Vertèbres &amp; Régions</div>
+                <div class="feature-subtitle">Les 33 vertèbres, courbures physiologiques et leurs rôles.</div>
+              </div>
+              <div class="feature-box">
+                <div class="feature-icon">🔬</div>
+                <div class="feature-title">Anatomie Morphologique</div>
+                <div class="feature-subtitle">Corps vertébral, arc, trou vertébral et les 7 apophyses.</div>
+              </div>
+              <div class="feature-box">
+                <div class="feature-icon">🏆</div>
+                <div class="feature-title">Score &amp; Explications</div>
+                <div class="feature-subtitle">Correction instantanée avec rappel direct des diapositives.</div>
+              </div>
+            </div>
+
+            <button class="btn-primary" id="btnStart">
+              <span>Lancer le Quiz de la Classe</span>
+              <span>➔</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- SCREEN 2: ACTIVE QUESTION SCREEN -->
+        <section class="screen" id="screenQuiz">
+          <div class="quiz-top">
+            <div class="question-progress">
+              <span class="question-label" id="questionCounter">Question 1 sur 10</span>
+            </div>
+          </div>
+
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+
+          <span class="category-tag" id="questionCategory">Généralités</span>
+          <h2 class="question-text" id="questionText">Chargement de la question...</h2>
+
+          <div class="lifelines-row">
+            <button class="lifeline-btn" id="btnLifeline5050" title="Élimine deux mauvaises réponses">
+              ✂️ 50 / 50
+            </button>
+            <button class="lifeline-btn" id="btnLifelineHint" title="Donner un indice oral à la classe">
+              💡 Indice pour la classe
+            </button>
+          </div>
+
+          <div class="hint-box" id="hintBox"></div>
+
+          <div class="options-grid" id="optionsGrid"></div>
+
+          <div class="explanation-card" id="explanationCard">
+            <div class="explanation-header" id="explanationHeader">
+              <span id="explanationIcon">✅</span>
+              <span id="explanationTitle">Explication</span>
+            </div>
+            <p class="explanation-text" id="explanationText"></p>
+            <span class="slide-ref" id="slideRef">Diapo associée</span>
+          </div>
+
+          <div class="action-row">
+            <button class="btn-next" id="btnNext">
+              <span>Question Suivante</span>
+              <span>➔</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- SCREEN 3: RESULTS SCREEN -->
+        <section class="screen" id="screenResults">
+          <div class="results-hero">
+            <div class="results-icon" id="resultsIcon">🏆</div>
+            <h2 class="results-title">Bilan de l'Évaluation</h2>
+            <div class="results-grade" id="finalGrade">18 / 20</div>
+            <div class="results-mention" id="finalMention">Major de Promotion en Anatomie !</div>
+
+            <div class="results-summary-box">
+              <div class="summary-heading">
+                <span>📋</span> Résumé Pédagogique des Notions Clés
+              </div>
+              <ul class="summary-list">
+                <li class="summary-item">🔹 <strong>Organisation :</strong> 33 vertèbres réparties en 5 régions (7C, 12T, 5L, 5S, 4Co).</li>
+                <li class="summary-item">🔹 <strong>Vertèbres Atypiques :</strong> C1 (Atlas) soutient le crâne ; C2 (Axis) permet la rotation grâce à sa dent.</li>
+                <li class="summary-item">🔹 <strong>Vertèbre type :</strong> Corps (antérieur), Arc (2 pédicules + 2 lames), et 7 apophyses.</li>
+                <li class="summary-item">🔹 <strong>Disques :</strong> 23 disques avec anneau fibreux externe et noyau pulpeux central.</li>
+                <li class="summary-item">🔹 <strong>Courbures :</strong> 2 lordoses (cervicale &amp; lombaire) et 2 cyphoses (thoracique &amp; sacrée).</li>
+                <li class="summary-item">🔹 <strong>Protection :</strong> Le canal vertébral abrite et protège la moelle épinière.</li>
+              </ul>
+            </div>
+
+            <div class="results-buttons">
+              <button class="btn-primary" id="btnRestart">
+                <span>Recommencer le Quiz</span>
+                <span>🔄</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </section>
+
+  </div>
+
+  <script>
+    /* ==========================================================
+       SYNTHESIZED SOUND ENGINE (Web Audio API)
+    ========================================================== */
+    class SoundEngine {
+      constructor() {
+        this.enabled = true;
+        this.ctx = null;
+      }
+
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) this.ctx = new AudioContext();
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+
+      playTone(freq, type, duration, startTime = 0, gainLevel = 0.15) {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, this.ctx.currentTime + startTime);
+
+        gain.gain.setValueAtTime(gainLevel, this.ctx.currentTime + startTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + startTime + duration);
+
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+
+        osc.start(this.ctx.currentTime + startTime);
+        osc.stop(this.ctx.currentTime + startTime + duration);
+      }
+
+      playCorrect() {
+        this.playTone(659.25, 'sine', 0.25, 0, 0.12);
+        this.playTone(830.61, 'sine', 0.35, 0.08, 0.14);
+        this.playTone(987.77, 'triangle', 0.45, 0.16, 0.15);
+      }
+
+      playWrong() {
+        this.playTone(220, 'sawtooth', 0.2, 0, 0.1);
+        this.playTone(180, 'sine', 0.3, 0.12, 0.12);
+      }
+
+      playClick() {
+        this.playTone(520, 'sine', 0.05, 0, 0.05);
+      }
+
+      playReveal() {
+        this.playTone(440, 'triangle', 0.3, 0, 0.12);
+        this.playTone(554.37, 'triangle', 0.35, 0.07, 0.14);
+        this.playTone(659.25, 'sine', 0.4, 0.14, 0.16);
+        this.playTone(880, 'sine', 0.5, 0.21, 0.18);
+      }
+
+      playFanfare() {
+        const notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach((freq, idx) => {
+          this.playTone(freq, 'triangle', 0.4, idx * 0.12, 0.15);
+        });
+      }
+    }
+
+    const sound = new SoundEngine();
+
+    /* ==========================================================
+       CONFETTI CANNON
+    ========================================================== */
+    class ConfettiCannon {
+      constructor(canvasId) {
+        this.canvas = document.getElementById(canvasId);
+        this.ctx = this.canvas.getContext('2d');
+        this.particles = [];
+        this.animationId = null;
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+      }
+
+      resize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+      }
+
+      fire(count = 80) {
+        const colors = ['#2563eb', '#38bdf8', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6'];
+        for (let i = 0; i < count; i++) {
+          this.particles.push({
+            x: this.canvas.width / 2 + (Math.random() - 0.5) * 200,
+            y: this.canvas.height * 0.4,
+            vx: (Math.random() - 0.5) * 14,
+            vy: -Math.random() * 12 - 4,
+            size: Math.random() * 8 + 5,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            rotation: Math.random() * 360,
+            rotSpeed: (Math.random() - 0.5) * 8,
+            gravity: 0.35,
+            opacity: 1
+          });
+        }
+        if (!this.animationId) this.animate();
+      }
+
+      animate() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        for (let i = this.particles.length - 1; i >= 0; i--) {
+          const p = this.particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += p.gravity;
+          p.rotation += p.rotSpeed;
+          p.opacity -= 0.008;
+
+          if (p.opacity <= 0 || p.y > this.canvas.height + 50) {
+            this.particles.splice(i, 1);
+            continue;
+          }
+
+          this.ctx.save();
+          this.ctx.translate(p.x, p.y);
+          this.ctx.rotate((p.rotation * Math.PI) / 180);
+          this.ctx.globalAlpha = Math.max(0, p.opacity);
+          this.ctx.fillStyle = p.color;
+          this.ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 1.3);
+          this.ctx.restore();
+        }
+
+        if (this.particles.length > 0) {
+          this.animationId = requestAnimationFrame(() => this.animate());
+        } else {
+          this.animationId = null;
+        }
+      }
+    }
+
+    const confetti = new ConfettiCannon('confettiCanvas');
+
+    /* ==========================================================
+       ANATOMICAL DATA (PHOTOS & HIDDEN LABELS)
+    ========================================================== */
+    const anatomicalData = {
+      // 1. Vue du Dos (viewBack)
+      "cervicale": {
+        pinNumber: "1",
+        view: "viewBack",
+        name: "RÉGION CERVICALE (C1 À C7)",
+        tag: "Région du cou • 7 Vertèbres",
+        slide: "Diapositive 6",
+        desc: "Située au niveau du cou, elle comprend 7 vertèbres cervicales (C1 à C7). Elle assure la mobilité de la tête et son soutien.",
+        bullets: [
+          "<strong>L'Atlas (C1) :</strong> Soutient le crâne et participe aux mouvements de flexion et d'extension de la tête.",
+          "<strong>L'Axis (C2) :</strong> Possède la <em>dent de l'axis</em> (processus odontoïde) qui permet la rotation de la tête.",
+          "<strong>C3 à C7 :</strong> Participent à la souplesse du cou et au soutien céphalique.",
+          "<strong>Courbure :</strong> Présente une <em>Lordose cervicale</em>."
+        ]
+      },
+      "thoracique": {
+        pinNumber: "2",
+        view: "viewBack",
+        name: "RÉGION THORACIQUE (T1 À T12)",
+        tag: "Région dorsale • 12 Vertèbres",
+        slide: "Diapositive 7",
+        desc: "Comprend 12 vertèbres thoraciques s'articulant avec les côtes pour former la cage thoracique.",
+        bullets: [
+          "<strong>Articulation avec les côtes :</strong> Participe à la constitution de la cage thoracique protégeant le cœur et les poumons.",
+          "<strong>Mobilité limitée :</strong> Mobilité plus restreinte que les vertèbres cervicales et lombaires en raison des rapports costaux.",
+          "<strong>Courbure :</strong> Présente une <em>Cyphose thoracique</em>."
+        ]
+      },
+      "lombaire": {
+        pinNumber: "3",
+        view: "viewBack",
+        name: "RÉGION LOMBAIRE (L1 À L5)",
+        tag: "Bas du dos • 5 Vertèbres",
+        slide: "Diapositive 8",
+        desc: "Située dans la partie inférieure du dos, elle est constituée de 5 vertèbres très massives.",
+        bullets: [
+          "<strong>Les plus volumineuses :</strong> Corps vertébral large et solide adapté pour supporter une grande partie du poids du corps.",
+          "<strong>Mouvements du tronc :</strong> Intervient principalement dans la flexion, l'extension et l'inclinaison latérale.",
+          "<strong>Stabilité :</strong> Rôle essentiel dans la stabilité pendant la marche et la station debout.",
+          "<strong>Courbure :</strong> Présente une <em>Lordose lombaire</em>."
+        ]
+      },
+      "sacrum": {
+        pinNumber: "4",
+        view: "viewBack",
+        name: "LA RÉGION SACRÉE (LE SACRUM)",
+        tag: "Ceinture pelvienne • 5 Vertèbres soudées",
+        slide: "Diapositive 9",
+        desc: "Situé à la partie postérieure du bassin, le sacrum est un os triangulaire issu de la fusion de 5 vertèbres sacrées.",
+        bullets: [
+          "<strong>Transmission du poids :</strong> Relie la colonne vertébrale au bassin et transmet le poids vers les membres inférieurs.",
+          "<strong>Articulations :</strong> S'articule avec les deux os iliaques par les articulations sacro-iliaques.",
+          "<strong>Courbure :</strong> Présente une <em>Cyphose sacrée</em>."
+        ]
+      },
+      "coccyx": {
+        pinNumber: "5",
+        view: "viewBack",
+        name: "LA RÉGION COCCYGIENNE (LE COCCYX)",
+        tag: "Extrémité inférieure • 4 Vertèbres soudées",
+        slide: "Diapositive 10",
+        desc: "Situé à l'extrémité inférieure de la colonne vertébrale, constitué de 4 petites vertèbres coccygiennes soudées.",
+        bullets: [
+          "<strong>Partie terminale :</strong> Représente l'extrémité du rachis.",
+          "<strong>Attaches musculaires :</strong> Participe à l'attache des muscles et ligaments du plancher pelvien.",
+          "<strong>Soutien :</strong> Contribue au soutien du corps en position assise."
+        ]
+      },
+      "courburesRachis": {
+        pinNumber: "6",
+        view: "viewBack",
+        name: "LES COURBURES PHYSIOLOGIQUES DU RACHIS",
+        tag: "Vue latérale • Équilibre et amortissement",
+        slide: "Diapositive 5 & 21",
+        desc: "De profil, la colonne présente naturellement 4 courbures physiologiques.",
+        bullets: [
+          "<strong>2 Lordoses (concaves en arrière) :</strong> Cervicale et Lombaire.",
+          "<strong>2 Cyphoses (convexes en arrière) :</strong> Thoracique et Sacrée.",
+          "<strong>Rôle dynamique :</strong> Augmentent la résistance axiale et amortissent les pressions."
+        ]
+      },
+
+      // 2. Vertèbre Type (viewVertebra)
+      "corpsVertebral": {
+        pinNumber: "1",
+        view: "viewVertebra",
+        name: "LE CORPS VERTÉBRAL",
+        tag: "Partie antérieure volumineuse",
+        slide: "Diapositive 13",
+        desc: "Constitue la partie antérieure de la vertèbre. Volumineux, il supporte la charge axiale.",
+        bullets: [
+          "<strong>Constitution :</strong> Os spongieux entouré d'une couche protectrice d'os compact.",
+          "<strong>Surfaces :</strong> Surfaces supérieure et inférieure en relation directe avec les disques intervertébraux."
+        ]
+      },
+      "trouVertebral": {
+        pinNumber: "2",
+        view: "viewVertebra",
+        name: "LE TROU VERTÉBRAL (FORAMEN VERTÉBRAL)",
+        tag: "Ouverture centrale protectrice",
+        slide: "Diapositive 15",
+        desc: "Ouverture située au centre de chaque vertèbre, délimitée par le corps en avant et l'arc en arrière.",
+        bullets: [
+          "<strong>Canal vertébral :</strong> La superposition des trous vertébraux forme le canal vertébral (ou rachidien).",
+          "<strong>Moelle épinière :</strong> Contient et protège la <em>moelle épinière</em> et ses enveloppes (méninges).",
+          "<strong>Système nerveux central :</strong> Protection anatomique majeure."
+        ]
+      },
+      "arcVertebral": {
+        pinNumber: "3",
+        view: "viewVertebra",
+        name: "L'ARC VERTÉBRAL",
+        tag: "Pédicules et lames",
+        slide: "Diapositive 14",
+        desc: "Situé en arrière du corps vertébral, il forme avec lui le trou vertébral.",
+        bullets: [
+          "<strong>2 Pédicules :</strong> Relient le corps vertébral aux parties postérieures.",
+          "<strong>2 Lames :</strong> Se rejoignent en arrière pour compléter la fermeture de l'arc."
+        ]
+      },
+      "apophyseEpineuse": {
+        pinNumber: "4",
+        view: "viewVertebra",
+        name: "L'APOPHYSE ÉPINEUSE (PROCESSUS ÉPINEUX)",
+        tag: "Saillie médiane postérieure",
+        slide: "Diapositive 17",
+        desc: "Située à l'arrière de la vertèbre, orientée postérieurement.",
+        bullets: [
+          "<strong>Palpable :</strong> Relief osseux palpable sous la peau le long du dos.",
+          "<strong>Point d'attache :</strong> Reçoit les attaches des muscles et des ligaments.",
+          "<strong>Rôle :</strong> Participe à la stabilisation de la colonne et aux mouvements du tronc."
+        ]
+      },
+      "apophysesTransverses": {
+        pinNumber: "5",
+        view: "viewVertebra",
+        name: "LES APOPHYSES TRANSVERSES (2)",
+        tag: "Saillies latérales",
+        slide: "Diapositive 18",
+        desc: "Deux saillies osseuses situées de chaque côté de la vertèbre.",
+        bullets: [
+          "<strong>Attaches musculaires :</strong> Servent principalement de points d'attache aux muscles et ligaments.",
+          "<strong>Région thoracique :</strong> Participent aux articulations avec les côtes."
+        ]
+      },
+      "apophysesArticulaires": {
+        pinNumber: "6",
+        view: "viewVertebra",
+        name: "LES APOPHYSES ARTICULAIRES (4)",
+        tag: "Emboîtement intervertébral",
+        slide: "Diapositive 19",
+        desc: "Situées à la partie postérieure : 2 supérieures et 2 inférieures.",
+        bullets: [
+          "<strong>Articulation :</strong> Permettent l'articulation entre les vertèbres voisines.",
+          "<strong>Guidage :</strong> Facilitent les mouvements tout en limitant les mouvements excessifs."
+        ]
+      },
+
+      // 3. Sacrum (viewSacrum)
+      "promontoire": {
+        pinNumber: "1",
+        view: "viewSacrum",
+        name: "BASE DU SACRUM & PROMONTOIRE SACRÉ",
+        tag: "Partie supérieure du sacrum",
+        slide: "Diapositive 23",
+        desc: "Partie supérieure du sacrum, au contact de la 5ème vertèbre lombaire (L5).",
+        bullets: [
+          "<strong>Base du sacrum :</strong> Partie crâniale qui s'articule avec L5.",
+          "<strong>Promontoire sacré :</strong> Relief osseux saillant situé à l'avant de la base."
+        ]
+      },
+      "surfaceAuriculaire": {
+        pinNumber: "2",
+        view: "viewSacrum",
+        name: "LA SURFACE AURICULAIRE",
+        tag: "Articulation sacro-iliaque",
+        slide: "Diapositive 23",
+        desc: "Surface articulaire latérale qui permet au sacrum de s'articuler avec les os iliaques du bassin.",
+        bullets: [
+          "<strong>Forme :</strong> Aspect en forme de pavillon d'oreille (auriculaire).",
+          "<strong>Transmission du poids :</strong> Transmet le poids du corps vers les membres inférieurs."
+        ]
+      },
+      "foramensSacres": {
+        pinNumber: "3",
+        view: "viewSacrum",
+        name: "LES FORAMENS SACRÉS (4 PAIRES)",
+        tag: "Passages nerveux sacrés",
+        slide: "Diapositive 23",
+        desc: "Orifices permettant le passage des branches nerveuses sacrées.",
+        bullets: [
+          "<strong>Foramens antérieurs :</strong> 4 paires d'ouvertures pour les branches nerveuses sacrées antérieures.",
+          "<strong>Foramens postérieurs :</strong> Ouvertures pour le passage des branches nerveuses postérieures."
+        ]
+      },
+      "creteSacree": {
+        pinNumber: "4",
+        view: "viewSacrum",
+        name: "LA CRÊTE SACRÉE MÉDIANE",
+        tag: "Face postérieure du sacrum",
+        slide: "Diapositive 23",
+        desc: "Relief osseux situé sur la face postérieure du sacrum.",
+        bullets: [
+          "<strong>Origine :</strong> Formé par la fusion des processus épineux des vertèbres sacrées.",
+          "<strong>Crêtes latérales :</strong> Entourée des crêtes intermédiaires et latérales (fusion des autres apophyses)."
+        ]
+      },
+      "apexCoccyx": {
+        pinNumber: "5",
+        view: "viewSacrum",
+        name: "L'APEX DU SACRUM & LE COCCYX",
+        tag: "Extrémité inférieure",
+        slide: "Diapositive 23",
+        desc: "Partie inférieure du sacrum, qui s'articule directement avec le coccyx sous-jacent.",
+        bullets: [
+          "<strong>Apex :</strong> Partie distale inférieure du sacrum.",
+          "<strong>Coccyx :</strong> Petit os constitué de vertèbres coccygiennes fusionnées."
+        ]
+      },
+
+      // 4. Courbures de profil (viewCurvatures)
+      "lordoseCervicale": {
+        pinNumber: "1",
+        view: "viewCurvatures",
+        name: "LORDOSE CERVICALE",
+        tag: "Courbure antérieure du cou",
+        slide: "Diapositive 21",
+        desc: "Courbure vers l'avant (lordose) au niveau cervical (C1 à C7).",
+        bullets: [
+          "<strong>Amortissement :</strong> Permet d'absorber les chocs mécaniques.",
+          "<strong>Équilibre :</strong> Maintient la tête en équilibre horizontal."
+        ]
+      },
+      "cyphoseThoracique": {
+        pinNumber: "2",
+        view: "viewCurvatures",
+        name: "CYPHOSE THORACIQUE",
+        tag: "Courbure postérieure dorsale",
+        slide: "Diapositive 21",
+        desc: "Courbure vers l'arrière (cyphose) au niveau des 12 vertèbres thoraciques (T1 à T12).",
+        bullets: [
+          "<strong>Cage thoracique :</strong> Augmente l'espace disponible pour les organes thoraciques.",
+          "<strong>Stabilité :</strong> Offre un point d'appui résistant pour les côtes."
+        ]
+      },
+      "lordoseLombaire": {
+        pinNumber: "3",
+        view: "viewCurvatures",
+        name: "LORDOSE LOMBAIRE",
+        tag: "Courbure antérieure du bas du dos",
+        slide: "Diapositive 21",
+        desc: "Courbure vers l'avant (lordose) au niveau des 5 vertèbres lombaires (L1 à L5).",
+        bullets: [
+          "<strong>Support de charge :</strong> Essentielle pour maintenir le tronc droit et amortir la marche.",
+          "<strong>Centre de gravité :</strong> Aligne le centre de masse avec les hanches."
+        ]
+      },
+      "cyphoseSacree": {
+        pinNumber: "4",
+        view: "viewCurvatures",
+        name: "CYPHOSE SACRÉE",
+        tag: "Courbure postérieure pelvienne",
+        slide: "Diapositive 21",
+        desc: "Courbure vers l'arrière (cyphose) au niveau du sacrum (S1 à S5).",
+        bullets: [
+          "<strong>Bassin osseux :</strong> Crée l'espace nécessaire aux viscères pelviens.",
+          "<strong>Solidité :</strong> Structure osseuse rigide non mobile."
+        ]
+      },
+      "coccyxProfil": {
+        pinNumber: "5",
+        view: "viewCurvatures",
+        name: "LE COCCYX DE PROFIL",
+        tag: "Terminaison osseuse",
+        slide: "Diapositive 10 & 21",
+        desc: "Extrémité terminale inférieure de la colonne vertébrale.",
+        bullets: [
+          "<strong>Vestige caudal :</strong> Composé de 4 petites vertèbres fusionnées.",
+          "<strong>Plancher pelvien :</strong> Point d'attache musculaire clé."
+        ]
+      },
+
+      // 5. Disque intervertébral (viewDisc)
+      "anneauFibreux": {
+        pinNumber: "1",
+        view: "viewDisc",
+        name: "L'ANNEAU FIBREUX (ANNULUS FIBROSUS)",
+        tag: "Périphérie du disque",
+        slide: "Diapositive 20",
+        desc: "Partie externe du disque intervertébral.",
+        bullets: [
+          "<strong>Constitution :</strong> Constituée de plusieurs couches circulaires de fibres très résistantes.",
+          "<strong>Rôle :</strong> Maintient le noyau pulpeux en son centre et résiste aux contraintes de torsion."
+        ]
+      },
+      "noyauPulpeux": {
+        pinNumber: "2",
+        view: "viewDisc",
+        name: "LE NOYAU PULPEUX (NUCLEUS PULPOSUS)",
+        tag: "Centre gélatineux amortisseur",
+        slide: "Diapositive 20",
+        desc: "Partie centrale du disque intervertébral.",
+        bullets: [
+          "<strong>Propriétés :</strong> Structure souple, déformable et très riche en eau.",
+          "<strong>Répartition des pressions :</strong> Contribue à répartir les pressions axiales."
+        ]
+      },
+      "vertebreSup": {
+        pinNumber: "3",
+        view: "viewDisc",
+        name: "LE CORPS VERTÉBRAL & DISQUES (23 AU TOTAL)",
+        tag: "Structure ostéoarticulaire",
+        slide: "Diapositive 20",
+        desc: "Chez l'adulte, on compte généralement 23 disques intervertébraux situés entre les corps vertébraux.",
+        bullets: [
+          "<strong>Localisation :</strong> Présents entre les vertèbres cervicales, thoraciques et lombaires.",
+          "<strong>Absence :</strong> Absents entre les vertèbres sacrées et coccygiennes fusionnées."
+        ]
+      },
+      "racineNerveuse": {
+        pinNumber: "4",
+        view: "viewDisc",
+        name: "LA RACINE NERVEUSE (TROU DE CONJUGAISON)",
+        tag: "Émergence nerveuse",
+        slide: "Diapositive 3 & 20",
+        desc: "Nerfs spinaux émergeant du canal vertébral à chaque étage intervertébral.",
+        bullets: [
+          "<strong>Passage :</strong> Émergent par les trous intervertébraux.",
+          "<strong>Rapport anatomique :</strong> En rapport étroit avec le disque intervertébral."
+        ]
+      }
+    };
+
+    /* ==========================================================
+       QUIZ DATA - 100% TIRED FROM SLIDES
+    ========================================================== */
+    const quizData = [
+      {
+        category: "Généralités sur le Rachis",
+        question: "Chez l'adulte, combien de vertèbres composent généralement la colonne vertébrale ?",
+        options: ["26 vertèbres", "33 vertèbres", "30 vertèbres", "35 vertèbres"],
+        correct: 1,
+        hint: "Additionnez les 5 régions avant et après la fusion (7 + 12 + 5 + 5 + 4).",
+        explanation: "La colonne vertébrale adulte comprend généralement 33 vertèbres réparties en cinq régions : 7 cervicales, 12 thoraciques, 5 lombaires, 5 sacrées soudées et environ 4 coccygiennes soudées.",
+        slide: "Diapositive 4 & 25 (Généralités)"
+      },
+      {
+        category: "Région Cervicale",
+        question: "Quelle particularité anatomique permet à l'Axis (C2) d'assurer la rotation de la tête ?",
+        options: [
+          "L'absence totale de corps vertébral",
+          "Une volumineuse apophyse épineuse bifide",
+          "Une excroissance osseuse verticale appelée 'dent de l'axis'",
+          "Deux facettes articulaires horizontales sans ligament"
+        ],
+        correct: 2,
+        hint: "Cette saillie osseuse sert de pivot vertical pour l'Atlas (C1).",
+        explanation: "L'Axis (C2) possède une saillie caractéristique appelée 'dent de l'axis' (processus odontoïde) qui sert d'axe de pivot permettant la rotation axiale de la tête.",
+        slide: "Diapositive 6 (Région cervicale)"
+      },
+      {
+        category: "Région Thoracique",
+        question: "Pourquoi les 12 vertèbres thoraciques présentent-elles une mobilité plus limitée que les autres ?",
+        options: [
+          "Parce que leurs disques intervertébraux sont totalement absents",
+          "En raison de leur articulation directe avec les côtes constituant la cage thoracique",
+          "Parce que leurs apophyses sont entièrement fusionnées entre elles",
+          "À cause de la présence d'une cyphose rigide sans muscles"
+        ],
+        correct: 1,
+        hint: "Elles participent à une cage protectrice vitale pour le cœur et les poumons.",
+        explanation: "Les vertèbres thoraciques s'articulent avec les côtes pour former la cage thoracique, ce qui restreint naturellement leur mobilité comparativement aux autres régions.",
+        slide: "Diapositive 7 (Région thoracique)"
+      },
+      {
+        category: "Région Lombaire",
+        question: "Quelle caractéristique morphologique distingue nettement les vertèbres lombaires ?",
+        options: [
+          "Ce sont les plus volumineuses avec un corps vertébral massif et solide",
+          "Elles possèdent des trous transversaires pour l'artère vertébrale",
+          "Leur apophyse épineuse est presque invisible",
+          "Elles sont soudées entre elles dès l'âge adulte"
+        ],
+        correct: 0,
+        hint: "Elles doivent supporter la majeure partie du poids du tronc et assurer la stabilité.",
+        explanation: "Les vertèbres lombaires sont les plus volumineuses des vertèbres mobiles. Leur corps large et robuste est adapté pour supporter le poids corporel.",
+        slide: "Diapositive 8 (Région lombaire)"
+      },
+      {
+        category: "Vertèbre Type",
+        question: "De quoi est constitué l'arc vertébral situé en arrière du corps de la vertèbre ?",
+        options: [
+          "De deux facettes costales et d'un foramen",
+          "De deux pédicules et de deux lames",
+          "D'un promontoire et d'une surface auriculaire",
+          "D'un noyau pulpeux et d'un anneau fibreux"
+        ],
+        correct: 1,
+        hint: "Les pédicules relient le corps en avant, et les lames se rejoignent en arrière.",
+        explanation: "L'arc vertébral est constitué de deux pédicules (qui s'implantent sur le corps) et de deux lames (qui se rejoignent en arrière pour refermer le trou vertébral).",
+        slide: "Diapositive 14 (L'arc vertébral)"
+      },
+      {
+        category: "Protection Nerveuse",
+        question: "Quelle structure vitale est logée et protégée à l'intérieur du canal vertébral ?",
+        options: [
+          "L'aorte abdominale",
+          "La moelle épinière et ses enveloppes protectrices (méninges)",
+          "Le nerf sciatique principal uniquement",
+          "Le liquide synovial des articulations sacro-iliaques"
+        ],
+        correct: 1,
+        hint: "C'est l'axe majeur de transmission nerveuse appartenant au système nerveux central.",
+        explanation: "La succession des trous vertébraux forme le canal vertébral qui abrite et protège la moelle épinière, composante clé du système nerveux central.",
+        slide: "Diapositive 3, 14 & 15 (Le trou vertébral)"
+      },
+      {
+        category: "Les Apophyses Vertébrales",
+        question: "Combien d'apophyses (processus) compte une vertèbre type au total ?",
+        options: ["3 apophyses", "5 apophyses", "7 apophyses", "9 apophyses"],
+        correct: 2,
+        hint: "Comptez : 1 postérieure (épineuse) + 2 latérales (transverses) + 4 articulaires (2 sup, 2 inf).",
+        explanation: "Une vertèbre typique possède exactement 7 apophyses : 1 apophyse épineuse, 2 transverses et 4 articulaires.",
+        slide: "Diapositive 16 (Les apophyses vertébrales)"
+      },
+      {
+        category: "Disques Intervertébraux",
+        question: "Combien de disques intervertébraux dénombre-t-on chez l'adulte et quelle est la partie centrale molle ?",
+        options: [
+          "33 disques ; l'Anneau fibreux (Annulus)",
+          "23 disques ; le Noyau pulpeux (Nucleus pulposus)",
+          "12 disques ; le Promontoire médullaire",
+          "25 disques ; l'Apex fibrocartilagineux"
+        ],
+        correct: 1,
+        hint: "Les disques sont absents entre les vertèbres soudées ; le centre riche en eau amortit les chocs.",
+        explanation: "On compte 23 disques intervertébraux chez l'adulte. Le centre souple et riche en eau s'appelle le noyau pulpeux (nucleus pulposus).",
+        slide: "Diapositive 20 (Les disques intervertébraux)"
+      },
+      {
+        category: "Courbures Physiologiques",
+        question: "De profil, quelles sont les deux régions présentant naturellement une 'Lordose' (courbure vers l'avant) ?",
+        options: [
+          "Thoracique et Sacrée",
+          "Cervicale et Lombaire",
+          "Lombaire et Sacrée",
+          "Cervicale et Thoracique"
+        ],
+        correct: 1,
+        hint: "Le cou et le bas du dos se creusent vers l'avant dans la même direction.",
+        explanation: "La colonne présente deux lordoses physiologiques (cervicale et lombaire) et deux cyphoses (thoracique et sacrée).",
+        slide: "Diapositive 5 & 21 (Les courbures physiologiques)"
+      },
+      {
+        category: "Le Sacrum & Coccyx",
+        question: "Par quelle surface et quelles articulations le sacrum triangulaire s'unit-il aux os iliaques du bassin ?",
+        options: [
+          "La surface auriculaire et les articulations sacro-iliaques",
+          "Le promontoire sacré et l'articulation atlanto-axoïdienne",
+          "La crête sacrée médiane et les disques coccygiens",
+          "Les 4 foramens postérieurs et la symphyse pubienne"
+        ],
+        correct: 0,
+        hint: "Cette facette latérale a une forme de pavillon d'oreille (auriculaire).",
+        explanation: "Le sacrum s'articule latéralement avec les deux os iliaques au niveau de ses surfaces auriculaires par l'intermédiaire des articulations sacro-iliaques.",
+        slide: "Diapositive 9, 23 & 24 (Le sacrum)"
+      }
+    ];
+
+    /* ==========================================================
+       APP NAVIGATION CONTROLLER (HUB / EXPLORER / QUIZ)
+    ========================================================== */
+    class AppController {
+      constructor() {
+        // Pages
+        this.pageHub = document.getElementById('pageHub');
+        this.pageExplorer = document.getElementById('pageExplorer');
+        this.pageQuiz = document.getElementById('pageQuiz');
+
+        // Hub Navigation Cards
+        this.cardGoExplorer = document.getElementById('cardGoExplorer');
+        this.cardGoQuiz = document.getElementById('cardGoQuiz');
+
+        // Return Buttons
+        this.btnReturnFromExplorer = document.getElementById('btnReturnFromExplorer');
+        this.btnReturnFromQuiz = document.getElementById('btnReturnFromQuiz');
+
+        // Explorer State & Elements
+        this.currentViewId = 'viewBack';
+        this.currentPartId = 'cervicale';
+        this.isRevealed = false;
+
+        this.viewButtons = document.querySelectorAll('.view-btn');
+        this.realPhotoViews = document.querySelectorAll('.real-photo-view');
+        this.pinSelectorBar = document.getElementById('pinSelectorBar');
+
+        this.infoRegionTag = document.getElementById('infoRegionTag');
+        this.infoSlideRef = document.getElementById('infoSlideRef');
+        this.mysteryBox = document.getElementById('mysteryBox');
+        this.mysteryHintTag = document.getElementById('mysteryHintTag');
+        this.displayedName = document.getElementById('displayedName');
+        this.btnRevealName = document.getElementById('btnRevealName');
+        this.revealIcon = document.getElementById('revealIcon');
+        this.revealText = document.getElementById('revealText');
+        this.infoDesc = document.getElementById('infoDesc');
+        this.infoBullets = document.getElementById('infoBullets');
+        this.btnPrevPart = document.getElementById('btnPrevPart');
+        this.btnNextPart = document.getElementById('btnNextPart');
+
+        // Quiz State & Elements
+        this.quizIndex = 0;
+        this.quizScore = 0;
+        this.quizAnswered = false;
+        this.quizLifeline5050Used = false;
+
+        this.screenWelcome = document.getElementById('screenWelcome');
+        this.screenQuiz = document.getElementById('screenQuiz');
+        this.screenResults = document.getElementById('screenResults');
+        this.btnStart = document.getElementById('btnStart');
+        this.btnNext = document.getElementById('btnNext');
+        this.btnRestart = document.getElementById('btnRestart');
+        this.btnLifeline5050 = document.getElementById('btnLifeline5050');
+        this.btnLifelineHint = document.getElementById('btnLifelineHint');
+        this.hintBox = document.getElementById('hintBox');
+        this.optionsGrid = document.getElementById('optionsGrid');
+        this.explanationCard = document.getElementById('explanationCard');
+        this.explanationIcon = document.getElementById('explanationIcon');
+        this.explanationTitle = document.getElementById('explanationTitle');
+        this.explanationText = document.getElementById('explanationText');
+        this.slideRef = document.getElementById('slideRef');
+        this.progressFill = document.getElementById('progressFill');
+        this.questionCounter = document.getElementById('questionCounter');
+        this.scoreText = document.getElementById('scoreText');
+        this.questionCategory = document.getElementById('questionCategory');
+        this.questionText = document.getElementById('questionText');
+
+        // Audio & Fullscreen
+        this.soundToggle = document.getElementById('soundToggle');
+        this.fullscreenToggle = document.getElementById('fullscreenToggle');
+
+        this.init();
+      }
+
+      init() {
+        // Hub Card Clicks -> Open Selected Page
+        this.cardGoExplorer.addEventListener('click', () => {
+          sound.playClick();
+          this.showPage(this.pageExplorer);
+          this.switchView('viewBack');
+        });
+
+        this.cardGoQuiz.addEventListener('click', () => {
+          sound.playClick();
+          this.showPage(this.pageQuiz);
+          this.showQuizScreen(this.screenWelcome);
+        });
+
+        // Return Buttons -> Return to Hub
+        this.btnReturnFromExplorer.addEventListener('click', () => {
+          sound.playClick();
+          this.showPage(this.pageHub);
+        });
+
+        this.btnReturnFromQuiz.addEventListener('click', () => {
+          sound.playClick();
+          this.showPage(this.pageHub);
+        });
+
+        // View switcher pills inside Explorer
+        this.viewButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            sound.playClick();
+            const viewId = btn.dataset.view;
+            this.switchView(viewId);
+          });
+        });
+
+        // Hotspot pin click listener on all pins in all views
+        document.querySelectorAll('.hotspot-pin').forEach(pin => {
+          pin.addEventListener('click', () => {
+            sound.playClick();
+            const partId = pin.dataset.id;
+            this.selectPart(partId);
+          });
+        });
+
+        // "Afficher le nom" signature click
+        this.btnRevealName.addEventListener('click', () => {
+          this.toggleNameReveal();
+        });
+
+        // Prev / Next part
+        this.btnPrevPart.addEventListener('click', () => {
+          sound.playClick();
+          this.navigatePart(-1);
+        });
+
+        this.btnNextPart.addEventListener('click', () => {
+          sound.playClick();
+          this.navigatePart(1);
+        });
+
+        // Audio & Fullscreen
+        this.soundToggle.addEventListener('click', () => {
+          sound.enabled = !sound.enabled;
+          this.soundToggle.textContent = sound.enabled ? '🔊' : '🔇';
+          if (sound.enabled) sound.playClick();
+        });
+
+        this.fullscreenToggle.addEventListener('click', () => {
+          if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(() => {});
+          } else {
+            if (document.exitFullscreen) document.exitFullscreen();
+          }
+        });
+
+        // Quiz listeners
+        this.btnStart.addEventListener('click', () => {
+          sound.playClick();
+          this.startQuiz();
+        });
+        this.btnNext.addEventListener('click', () => {
+          sound.playClick();
+          this.nextQuestion();
+        });
+        this.btnRestart.addEventListener('click', () => {
+          sound.playClick();
+          this.startQuiz();
+        });
+        this.btnLifeline5050.addEventListener('click', () => this.apply5050());
+        this.btnLifelineHint.addEventListener('click', () => this.toggleHint());
+      }
+
+      showPage(page) {
+        [this.pageHub, this.pageExplorer, this.pageQuiz].forEach(p => p.classList.remove('active'));
+        page.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      /* Explorer View Switching */
+      switchView(viewId) {
+        this.currentViewId = viewId;
+
+        this.viewButtons.forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.view === viewId);
+        });
+
+        this.realPhotoViews.forEach(view => {
+          view.classList.toggle('active', view.id === viewId);
+        });
+
+        this.renderPinSelectorChips(viewId);
+
+        const firstPin = document.querySelector(`#${viewId} .hotspot-pin`);
+        if (firstPin) {
+          this.selectPart(firstPin.dataset.id);
+        }
+      }
+
+      renderPinSelectorChips(viewId) {
+        this.pinSelectorBar.innerHTML = '';
+        const pins = document.querySelectorAll(`#${viewId} .hotspot-pin`);
+        pins.forEach(pin => {
+          const partId = pin.dataset.id;
+          const pinNum = pin.textContent;
+          const chip = document.createElement('button');
+          chip.className = 'pin-btn-chip';
+          chip.dataset.id = partId;
+          chip.innerHTML = `<span>📍 Point ${pinNum}</span>`;
+          chip.addEventListener('click', () => {
+            sound.playClick();
+            this.selectPart(partId);
+          });
+          this.pinSelectorBar.appendChild(chip);
+        });
+      }
+
+      selectPart(partId) {
+        const data = anatomicalData[partId];
+        if (!data) return;
+
+        this.currentPartId = partId;
+
+        if (data.view !== this.currentViewId) {
+          this.switchView(data.view);
+          return;
+        }
+
+        document.querySelectorAll(`#${this.currentViewId} .hotspot-pin`).forEach(pin => {
+          pin.classList.toggle('active', pin.dataset.id === partId);
+        });
+
+        document.querySelectorAll('.pin-btn-chip').forEach(chip => {
+          chip.classList.toggle('active', chip.dataset.id === partId);
+        });
+
+        this.infoRegionTag.textContent = data.tag;
+        this.infoSlideRef.textContent = `📖 Réf : ${data.slide}`;
+        this.infoDesc.innerHTML = data.desc;
+
+        this.infoBullets.innerHTML = '';
+        data.bullets.forEach(b => {
+          const li = document.createElement('li');
+          li.innerHTML = b;
+          this.infoBullets.appendChild(li);
+        });
+
+        this.hideName();
+      }
+
+      toggleNameReveal() {
+        if (this.isRevealed) {
+          this.hideName();
+          sound.playClick();
+        } else {
+          this.revealName();
+          sound.playReveal();
+        }
+      }
+
+      revealName() {
+        this.isRevealed = true;
+        const data = anatomicalData[this.currentPartId];
+
+        this.displayedName.textContent = data.name;
+        this.displayedName.classList.remove('hidden-mode');
+        this.mysteryBox.classList.add('revealed');
+        this.mysteryHintTag.textContent = '🔓 Nom révélé';
+
+        this.revealIcon.textContent = '🙈';
+        this.revealText.textContent = 'Masquer le nom';
+        this.btnRevealName.classList.add('is-revealed');
+      }
+
+      hideName() {
+        this.isRevealed = false;
+        this.displayedName.textContent = '[ ? ? ? ? ? ? ? ? ? ]';
+        this.displayedName.classList.add('hidden-mode');
+        this.mysteryBox.classList.remove('revealed');
+        this.mysteryHintTag.textContent = '🔒 Nom masqué';
+
+        this.revealIcon.textContent = '👁️';
+        this.revealText.textContent = 'Afficher le nom';
+        this.btnRevealName.classList.remove('is-revealed');
+      }
+
+      navigatePart(direction) {
+        const pins = Array.from(document.querySelectorAll(`#${this.currentViewId} .hotspot-pin`));
+        if (pins.length === 0) return;
+
+        let currentIndex = pins.findIndex(p => p.dataset.id === this.currentPartId);
+        if (currentIndex === -1) currentIndex = 0;
+
+        let nextIndex = (currentIndex + direction + pins.length) % pins.length;
+        this.selectPart(pins[nextIndex].dataset.id);
+      }
+
+      /* Quiz System */
+      showQuizScreen(screen) {
+        [this.screenWelcome, this.screenQuiz, this.screenResults].forEach(s => s.classList.remove('active'));
+        screen.classList.add('active');
+      }
+
+      startQuiz() {
+        this.quizIndex = 0;
+        this.quizScore = 0;
+        this.showQuizScreen(this.screenQuiz);
+        this.loadQuestion();
+      }
+
+      loadQuestion() {
+        this.quizAnswered = false;
+        this.quizLifeline5050Used = false;
+        const q = quizData[this.quizIndex];
+
+        this.hintBox.style.display = 'none';
+        this.hintBox.textContent = '';
+        this.btnLifelineHint.disabled = false;
+        this.btnLifeline5050.disabled = false;
+        this.explanationCard.style.display = 'none';
+        this.explanationCard.className = 'explanation-card';
+        this.btnNext.style.display = 'none';
+
+        this.questionCounter.textContent = `Question ${this.quizIndex + 1} sur ${quizData.length}`;
+        this.scoreText.textContent = `${this.quizScore} / ${this.quizIndex}`;
+        this.questionCategory.textContent = q.category;
+        this.questionText.textContent = q.question;
+
+        const progressPct = ((this.quizIndex) / quizData.length) * 100;
+        this.progressFill.style.width = `${progressPct}%`;
+
+        this.optionsGrid.innerHTML = '';
+        const letters = ['A', 'B', 'C', 'D'];
+
+        q.options.forEach((optText, i) => {
+          const btn = document.createElement('button');
+          btn.className = 'option-btn';
+          btn.dataset.index = i;
+          btn.innerHTML = `
+            <div class="option-letter">${letters[i]}</div>
+            <div class="option-text">${optText}</div>
+          `;
+          btn.addEventListener('click', () => this.handleQuizOptionClick(i, btn));
+          this.optionsGrid.appendChild(btn);
+        });
+      }
+
+      apply5050() {
+        if (this.quizAnswered || this.quizLifeline5050Used) return;
+        sound.playClick();
+        this.quizLifeline5050Used = true;
+        this.btnLifeline5050.disabled = true;
+
+        const currentQ = quizData[this.quizIndex];
+        const wrongIndices = [0, 1, 2, 3].filter(idx => idx !== currentQ.correct);
+        wrongIndices.sort(() => Math.random() - 0.5);
+        const toEliminate = wrongIndices.slice(0, 2);
+
+        const allButtons = this.optionsGrid.querySelectorAll('.option-btn');
+        allButtons.forEach(btn => {
+          const idx = parseInt(btn.dataset.index, 10);
+          if (toEliminate.includes(idx)) btn.classList.add('eliminated');
+        });
+      }
+
+      toggleHint() {
+        if (this.quizAnswered) return;
+        sound.playClick();
+        const currentQ = quizData[this.quizIndex];
+        this.hintBox.innerHTML = `<strong>💡 Indice pour vos camarades :</strong> ${currentQ.hint}`;
+        this.hintBox.style.display = 'block';
+        this.btnLifelineHint.disabled = true;
+      }
+
+      handleQuizOptionClick(selectedIndex, clickedBtn) {
+        if (this.quizAnswered) return;
+        this.quizAnswered = true;
+
+        const q = quizData[this.quizIndex];
+        const isCorrect = selectedIndex === q.correct;
+
+        this.btnLifeline5050.disabled = true;
+        this.btnLifelineHint.disabled = true;
+
+        const allButtons = this.optionsGrid.querySelectorAll('.option-btn');
+        allButtons.forEach(btn => {
+          btn.classList.add('locked');
+          const idx = parseInt(btn.dataset.index, 10);
+          if (idx === q.correct) btn.classList.add('correct');
+        });
+
+        if (isCorrect) {
+          this.quizScore++;
+          sound.playCorrect();
+          confetti.fire(35);
+          this.explanationCard.classList.add('show-correct');
+          this.explanationIcon.textContent = '🎉';
+          this.explanationTitle.textContent = 'Excellente réponse !';
+        } else {
+          clickedBtn.classList.add('wrong');
+          sound.playWrong();
+          this.explanationCard.classList.add('show-wrong');
+          this.explanationIcon.textContent = '⚠️';
+          this.explanationTitle.textContent = 'Pas tout à fait...';
+        }
+
+        this.scoreText.textContent = `${this.quizScore} / ${this.quizIndex + 1}`;
+        this.explanationText.textContent = q.explanation;
+        this.slideRef.textContent = `📖 Réf : ${q.slide}`;
+        this.explanationCard.style.display = 'block';
+
+        this.btnNext.style.display = 'inline-flex';
+        this.btnNext.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      nextQuestion() {
+        this.quizIndex++;
+        if (this.quizIndex < quizData.length) {
+          this.loadQuestion();
+        } else {
+          this.showQuizResults();
+        }
+      }
+
+      showQuizResults() {
+        this.progressFill.style.width = '100%';
+        this.showQuizScreen(this.screenResults);
+
+        const grade20 = (this.quizScore / quizData.length) * 20;
+        document.getElementById('finalGrade').textContent = `${grade20.toFixed(0)} / 20`;
+
+        const mentionEl = document.getElementById('finalMention');
+        const iconEl = document.getElementById('resultsIcon');
+
+        if (this.quizScore >= 9) {
+          iconEl.textContent = '🏆';
+          mentionEl.textContent = 'Félicitations : Major de Promotion en Anatomie !';
+          sound.playFanfare();
+          confetti.fire(120);
+        } else if (this.quizScore >= 7) {
+          iconEl.textContent = '🩺';
+          mentionEl.textContent = 'Très bien : Mention Interne des Hôpitaux !';
+          sound.playFanfare();
+          confetti.fire(70);
+        } else if (this.quizScore >= 5) {
+          iconEl.textContent = '📚';
+          mentionEl.textContent = 'Passable : Notions acquises, révision conseillée.';
+        } else {
+          iconEl.textContent = '📖';
+          mentionEl.textContent = 'À revoir : Relire les diapositives du rachis !';
+        }
+      }
+    }
+
+    // Launch Application
+    document.addEventListener('DOMContentLoaded', () => {
+      new AppController();
+    });
+  </script>
+</body>
+</html>
